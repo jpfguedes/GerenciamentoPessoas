@@ -1,0 +1,63 @@
+<ui:composition template="/WEB-INF/templates/LayoutPadrao.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	
+	<ui:define name="titulo">Pesquisa de visitas</ui:define>
+	
+	<ui:define name="corpo">
+		<h:form id="frmPesquisaVisitas">
+			<h1>Pesquisa de visitas</h1>
+			<p:messages autoUpdate="true" closable="true" />
+			
+			<p:toolbar style="margin-top: 20px">
+				<p:toolbarGroup>
+					<p:commandButton id="botaoPesquisar" value="Pesquisar" />
+				</p:toolbarGroup>
+				<p:toolbarGroup align="right">
+					<p:button value="Novo" outcome="/visitas/CadastroVisita" />
+				</p:toolbarGroup>
+			</p:toolbar>
+			
+			<p:panelGrid id="panelPesquisaVisitas" columns="2" style="width: 100%; margin-top: 10px" columnClasses="rotulo, campo">
+				<p:outputLabel value="Documento (RG ou CPF)" for="documento" />
+				<p:inputText id="documento" size="20" />
+				
+				<p:outputLabel value="Nome do visitante" for="pessoa" />
+				<p:autoComplete id="pessoa" size="40" dropdown="true" forceSelection="true" />
+				
+				<p:outputLabel value="Data" />
+				<h:panelGroup>
+					<p:calendar size="15" pattern="dd/MM/yyyy" />
+					a
+					<p:calendar size="15" pattern="dd/MM/yyyy" />
+				</h:panelGroup>
+			</p:panelGrid>
+			
+			<p:dataTable id="tabelaVisitas" style="margin-top: 10px" emptyMessage="Nenhuma visita encontrada!" rows="20" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
+				<p:column headerText="Visitante">
+					<h:outputText />
+				</p:column>
+				<p:column headerText="Documento (RG ou CPF)">
+					<h:outputText />
+				</p:column>
+				<p:column headerText="Data e hora de entrada" style="text-align: center">
+					<h:outputText />
+				</p:column>
+				<p:column headerText="Data e hora de saída" style="text-align: center">
+					<h:outputText />
+				</p:column>
+				<p:column headerText="Setor">
+					<h:outputText />
+				</p:column>
+				<p:column headerText="Motivo">
+					<h:outputText />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+	
+</ui:composition>

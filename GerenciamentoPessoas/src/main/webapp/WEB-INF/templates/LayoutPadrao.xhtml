@@ -36,12 +36,11 @@
 				<h:form style="display: inline-block">
 					<p:menubar styleClass="menu-sistema">
 						<p:submenu label="Cadastros">
-							<p:menuitem value="Pessoas" />
-							<p:menuitem value="Usuários" />
+							<p:menuitem value="Pessoas" outcome="/pessoas/CadastroPessoa" />
 						</p:submenu>
-						<p:submenu label="Agenda">
-							<p:menuitem value="Nova entrada" />
-							<p:menuitem value="Pesquisa" />
+						<p:submenu label="Visitas">
+							<p:menuitem value="Nova visita" outcome="/visitas/CadastroVisita" />
+							<p:menuitem value="Pesquisa" outcome="/visitas/PesquisaVisitas" />
 						</p:submenu>
 						<p:menuitem value="Sair" url="/j_spring_security_logout" />
 					</p:menubar>
@@ -63,7 +62,7 @@
 			Procuradoria do Trabalho no Município de Três Lagoas: Rua Ranulpho M. Leal, 378 Jd. Angélica - CEP: 79611-100 Fone: (67) 3509-2000.<br/>
 			Procuradoria do Trabalho no Município de Corumbá: Rua Ladário, 788, Centro - CEP: 79303-030 - Fone: (67) 3234-9300.<br/>
 			<p:separator />
-			By Setor de TI da PRT 24a. Região/MS.
+			By TI - PRT 24a. Região/MS.
 		</footer>
 		
 		<script>
