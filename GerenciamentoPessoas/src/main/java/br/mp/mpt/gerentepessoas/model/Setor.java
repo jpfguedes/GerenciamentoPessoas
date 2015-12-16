@@ -4,19 +4,15 @@
 package br.mp.mpt.gerentepessoas.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -26,8 +22,8 @@ import org.hibernate.validator.constraints.NotBlank;
  */
 
 @Entity
-@Table(name = "pessoa")
-public class Pessoa implements Serializable {
+@Table(name = "setor")
+public class Setor implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -36,23 +32,12 @@ public class Pessoa implements Serializable {
 	private Long id;
 
 	@NotBlank
-	@Size(max = 100)
-	@Column(nullable = false, length = 100)
+	@Column(nullable = false, length = 80)
 	private String nome;
-
-	@NotBlank
-	@Size(max = 100)
-	@Column(name = "empresa_origem", nullable = false, length = 100)
-	private String empresaOrigem;
-
-	@NotBlank
-	@Size(max = 14)
-	@Column(nullable = false, length = 14)
-	private String documento;
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "visita_id", nullable = false)
-	private List<Visita> visitas = new ArrayList<>();
+	@OneToOne
+	@JoinColumn(name = "setor_id")
+	private Setor setor;
 
 	/**
 	 * @return the id
@@ -85,48 +70,18 @@ public class Pessoa implements Serializable {
 	}
 
 	/**
-	 * @return the empresaOrigem
+	 * @return the setor
 	 */
-	public String getEmpresaOrigem() {
-		return empresaOrigem;
+	public Setor getSetor() {
+		return setor;
 	}
 
 	/**
-	 * @param empresaOrigem
-	 *            the empresaOrigem to set
+	 * @param setor
+	 *            the setor to set
 	 */
-	public void setEmpresaOrigem(String empresaOrigem) {
-		this.empresaOrigem = empresaOrigem;
-	}
-
-	/**
-	 * @return the documento
-	 */
-	public String getDocumento() {
-		return documento;
-	}
-
-	/**
-	 * @param documento
-	 *            the documento to set
-	 */
-	public void setDocumento(String documento) {
-		this.documento = documento;
-	}
-
-	/**
-	 * @return the visitas
-	 */
-	public List<Visita> getVisitas() {
-		return visitas;
-	}
-
-	/**
-	 * @param visitas
-	 *            the visitas to set
-	 */
-	public void setVisitas(List<Visita> visitas) {
-		this.visitas = visitas;
+	public void setSetor(Setor setor) {
+		this.setor = setor;
 	}
 
 	/*
@@ -155,7 +110,7 @@ public class Pessoa implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Pessoa other = (Pessoa) obj;
+		Setor other = (Setor) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
